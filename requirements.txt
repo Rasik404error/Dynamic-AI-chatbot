@@ -3,3 +3,4 @@ openai
 python-dotenv
 plotly
 pandas
+streamlit_mic_recorder
