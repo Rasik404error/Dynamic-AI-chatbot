@@ -4,7 +4,7 @@ from pathlib import Path
 
 from openai import OpenAI
 from dotenv import load_dotenv
-
+import streamlit as st
 
 # =====================================================
 # CONFIGURATION
@@ -14,17 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / ".env")
 
-API_KEY = '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'
-
-if not API_KEY:
-    raise ValueError("OpenRouter API key not found.")
-
-
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=API_KEY,
-    timeout=60.0,
-    max_retries=2
+    api_key=st.secrets["OPENROUTER_API_KEY"]
 )
 
 MODEL = "openrouter/free"
